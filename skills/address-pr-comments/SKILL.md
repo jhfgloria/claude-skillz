@@ -12,3 +12,5 @@ Given a PR number, look for the the comments with :thumbsup: and :eyes: reaction
 3. Evaluate the rationale of the comments with :eyes: reactions and reason if they make sense and why (or not).
 4. Plan changes for the comments with :thumbsup: reactions.
 5. Print the evaluation and the plan for changes in a clear and concise manner.
+6. DON'T COMMIT THE FINAL CHANGES WITHOUT USER PERMISSION!
+7. If the user gives permission to commit the changes, commit the changes with a clear and concise commit message that summarizes the changes made.

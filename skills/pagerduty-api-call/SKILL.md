@@ -4,7 +4,7 @@ description: Make API calls to PageDuty given a context of what to run and a [-s
 ---
 
 # Context
-The agent receives a user prompt to make an API call to PageDuty. The prompt includes the subdomain and environment as flags, e.g., `-s mysubdomain -p production`. The agent should not explore any webpage documentation for the API, with the exception of the known endpoints listed in this document. The agent should only use the API keys provided in this document for authentication when making API calls. When possible give me a response with on a table format like this one:
+The agent receives a user prompt to make an API call to PageDuty. The prompt includes the subdomain and environment as flags, e.g., `-s mysubdomain -p environment`. The agent should not explore any webpage documentation for the API, with the exception of the known endpoints listed in this document. The agent should only use the API keys provided in this document for authentication when making API calls. When possible give me a response with on a table format like this one:
 ┌─────────┬──────────────────────┬──────────┬──────────────────────────────────────────────────────────────────┬───────────────┐
 │   ID    │       Name           │  Status  │                           Description                            │ Last Incident │
 ├─────────┼──────────────────────┼──────────┼──────────────────────────────────────────────────────────────────┼───────────────┤
