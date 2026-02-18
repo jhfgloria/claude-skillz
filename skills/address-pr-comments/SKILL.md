@@ -8,7 +8,7 @@ Given a PR number, look for the the comments with :thumbsup: and :eyes: reaction
 
 # What the agent should do
 1. Check if the PR branch and the current branch are the same. If not, switch to the PR branch.
-2. Look for the comments with :thumbsup: and :eyes: reactions in the PR
+2. Look for non-resolved comments with :thumbsup: and :eyes: reactions in the PR and their responses to get context of the discussion and possible resolutions.
 3. Evaluate the rationale of the comments with :eyes: reactions and reason if they make sense and why (or not).
 4. Plan changes for the comments with :thumbsup: reactions.
 5. Print the evaluation and the plan for changes in a clear and concise manner.
