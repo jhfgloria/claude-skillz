@@ -48,7 +48,11 @@ SKIPPED_COUNT=0
 UPDATED_COUNT=0
 
 # Iterate through each subdirectory in the skills repo
-for skill_path in "$SKILLS_REPO_PATH"/*; do
+shopt -s nullglob
+for skill_path in "$SKILLS_REPO_PATH"/*/; do
+    # Remove trailing slash
+    skill_path="${skill_path%/}"
+    
     # Skip if not a directory
     if [[ ! -d "$skill_path" ]]; then
         continue
@@ -64,17 +68,17 @@ for skill_path in "$SKILLS_REPO_PATH"/*; do
             rm -rf "$target_path"
             cp -r "$skill_path" "$target_path"
             echo "  [✓] Updated: $skill_name"
-            ((UPDATED_COUNT++))
+            ((UPDATED_COUNT++)) || true
         else
             echo "  [SKIP] Already exists: $skill_name"
             echo "         Use --force to replace"
-            ((SKIPPED_COUNT++))
+            ((SKIPPED_COUNT++)) || true
         fi
     else
         # Copy the skill directory
         cp -r "$skill_path" "$target_path"
         echo "  [✓] Installed: $skill_name"
-        ((INSTALLED_COUNT++))
+        ((INSTALLED_COUNT++)) || true
     fi
 done
 
