@@ -3,118 +3,114 @@ name: coding-typescript
 description: Writes best practices for writing clean, maintainable TypeScript code in this codebase.
 ---
 
-## Rules
-
+### Model
 - Use Sonnet 4.6 for this skill
 
-## Key Principles
-
 ### Write Self-Explaining Code
-- **Never add explanatory comments** unless absolutely necessary
-- Code should be clear enough to understand without comments
-- Use descriptive variable and function names instead
-- Use short composable functions instead of long functions 
+- Never add explanatory comments unless absolutely necessary.
+- Code should be clear enough to understand without comments.
+- Use descriptive variable and function.
+
+### Style of code
+
+#### General
+- Use semicolons.
+- Use functional approaches as much as possible.
+- Use for-loops instead of the functionall approach for cost-intensive iterations.
+
+#### Functions
+- Avoid anonymous, except when used as function arguments.
 
 **Bad:**
 ```typescript
-// This function gets the default headers including auth token and client info
-async function getDefaultHeaders(account?: string): Promise<Record<string, string>> {
-  // Get the subdomain for this account
-  const subdomain = getSubdomain(account);
-  // Build the client header with subdomain
-  const clientHeader = subdomain
-    ? `"MyApp" <https://${subdomain}.example.com>`
-    : '"MyApp"';
+const getName = (person: Person) => person.name;
+```
 
-  return {
-    Authorization: await getAuthToken(account),
-    Accept: 'application/json',
-    'Content-Type': 'application/json',
-    'X-Client-Id': clientHeader,
-  };
+**Bad:**
+```typescript
+[1,2,3,4].forEach(function log(x) {
+  console.log(x);
+});
+```
+
+**Good:**
+```typescript
+function getName(person: Person) {
+  return person.name;
+}
+```
+
+**Bad:**
+```typescript
+[1,2,3,4].forEach((x) => (console.log(x)));
+```
+
+#### Conditionals
+- When a if-else execution are one-liners, use a ternary condition instead:
+
+**Bad:**
+```typescript
+if (isOdd(number)) {
+  return number + 1;
+} else {
+  return number;
 }
 ```
 
 **Good:**
 ```typescript
-async function getDefaultHeaders(account?: string): Promise<Record<string, string>> {
-  const subdomain = getSubdomain(account);
-  const clientHeader = subdomain
-    ? `"MyApp" <https://${subdomain}.example.com>`
-    : '"MyApp"';
+return (isOdd(number)) ? number + 1 : number;
+```
 
-  return {
-    Authorization: await getAuthToken(account),
-    Accept: 'application/json',
-    'Content-Type': 'application/json',
-    'X-Client-Id': clientHeader,
-  };
+#### Type Safety
+- Use TypeScript's type system to descrive functions, variables, and data structures.
+- Never use `any`.
+- When possible use type inference to no pollute the code.
+- Use optional chaining (`?.`) and nullish coalescing (`??`) to traverse possibly `null`/`undefined` objects.
+
+**Bad:**
+```typescript
+function doublePairs(n: number, m: number) {
+  return [n * 2, m * 2];
 }
 ```
 
-### Fallback Patterns
-- Check all possible configuration paths
-- Use nullish coalescing (`??`) for clean fallbacks
-
-**Example:**
+**Bad:**
 ```typescript
-const accounts =
-  config.getOptional<PagerDutyAccountConfig[]>('pagerDuty.accounts')
-  ?? config.getOptional<PagerDutyAccountConfig[]>('pagerDuty');
-```
-
-### Helper Function Pattern
-- Extract repeated logic into helper functions
-- Reduces duplication and makes updates easier
-- Name helpers clearly based on what they return/do
-- Don't make these helpers global and most time apply them locally
-
-**Example:**
-```typescript
-async function getDefaultHeaders(account?: string): Promise<Record<string, string>> {
-  const subdomain = getSubdomain(account);
-  const clientHeader = subdomain
-    ? `"MyApp" <https://${subdomain}.example.com>`
-    : '"MyApp"';
-
-  return {
-    Authorization: await getAuthToken(account),
-    Accept: 'application/json',
-    'Content-Type': 'application/json',
-    'X-Client-Id': clientHeader,
-  };
+function findName(person: Person): string | undefined {
+  return person.profile && person.profile.name;
 }
 ```
 
-### Type Safety
-- Use TypeScript's type system fully
-- Prefer `string | undefined` over `string | undefined | null`
-- Use optional chaining (`?.`) and nullish coalescing (`??`) appropriately
-
-### Test Coverage
-- Update tests to match new implementations
-- Use descriptive test names that explain what's being tested
-
-## Common Patterns in This Codebase
-
-### Configuration Loading
+**Bad:**
 ```typescript
-const accounts =
-  config.getOptional<AccountConfig[]>('service.accounts')
-  ?? config.getOptional<AccountConfig[]>('service');
-```
-
-### Fallback Logic
-```typescript
-function getValue(key?: string): string | undefined {
-  if (isLegacyMode) {
-    return ValueConfig.default;
-  }
-
-  if (key && key !== 'default') {
-    return ValueConfig[key] ?? fallbackValue ?? ValueConfig.default;
-  }
-
-  return fallbackValue ?? ValueConfig.default;
+function getDatabaseConfiguration(config: Config): string {
+  return (config && config.production && config.production.database) || "default";
 }
 ```
+
+**Good:**
+```typescript
+function doublePairs(n: number, m: number): [number, number] {
+  return [n * 2, m * 2];
+}
+```
+
+**Good:**
+```typescript
+function findName(person: Person): string | undefined {
+  return person.profile?.name;
+}
+```
+
+**Good:**
+```typescript
+function getDatabaseConfiguration(config: Config): string {
+  return config?.production?.database ?? "default";
+}
+```
+
+### Tests
+- Avoid mocking as first approach to tests.
+- Don't mock code that is not controlled by the project (e.g. dependencies).
+- When testing external calls rely on tools like `msw` instead of mocking boundaries.
