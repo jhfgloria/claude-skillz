@@ -24,19 +24,19 @@ description: Writes best practices for writing clean, maintainable Elixir code.
 **Example:**
 ```elixir
 with(
-  {:ok, access_token} <- maybe_get_oauth_access_token(webhook.oauth_client_id),
-  {:ok, initial_result, delivery_detail} <- process_webhook_request(webhook, access_token),
-  {:ok, _final_result, delivery_detail} <- maybe_handle_oauth_unauthorized(initial_result, delivery_detail, webhook),
-  {:ok} <- process_successful_response(webhook, delivery_detail)
+  {:ok, person} <- maybe_find_person(params.person_id),
+  {:ok, initial_result, detail} <- process_enrollment(person, params),
+  {:ok, _final_result, detail} <- maybe_resolve_duplicate(initial_result, detail, person),
+  {:ok} <- finalize_enrollment(person, detail)
 ) do
-  {:ok, delivery_detail}
+  {:ok, detail}
 else
-  {:ok, result, delivery_detail} -> {result, delivery_detail}
-  {:error, result, delivery_detail} -> {result, delivery_detail}
+  {:ok, result, detail} -> {result, detail}
+  {:error, result, detail} -> {result, detail}
   {:error, :permanent_error} -> ...
   {:error, :temporary_error} -> ...
-  {:error, :tls_alert} -> ...
-  {:error, :oauth_client_token_fetch_error} -> ...
+  {:error, :not_found} -> ...
+  {:error, :person_fetch_error} -> ...
 end
 ```
 
@@ -46,28 +46,28 @@ end
 
 **Example:**
 ```elixir
-defp maybe_delete_subscription(
+defp maybe_archive_person(
         %{
-          integration_key: "app:" <> _,
-          webhook_subscription_id: subscription_id,
+          source_key: "ext:" <> _,
+          person_id: person_id,
           account_id: account_id
         },
-        %DeliveryDetail{
-          response_body: response_body,
-          response_status_code: 404
+        %ResponseDetail{
+          body: body,
+          status_code: 404
         }
       )
-      when not is_nil(subscription_id) and not is_nil(account_id) do
-  # only runs for app: integrations, 404 responses, with both IDs present
-  case Jason.decode(response_body) do
-    {:ok, %{"operation" => "delete_subscription"}} ->
-      WCSInteractor.delete_subscription(account_id, subscription_id)
+      when not is_nil(person_id) and not is_nil(account_id) do
+  # only runs for ext: sources, 404 responses, with both IDs present
+  case Jason.decode(body) do
+    {:ok, %{"action" => "archive_person"}} ->
+      PersonService.archive(account_id, person_id)
       ...
     _ -> :ok
   end
 end
 
-defp maybe_delete_subscription(_webhook, _delivery_detail), do: :ok
+defp maybe_archive_person(_person, _detail), do: :ok
 ```
 
 #### Unused patter-matching terms
