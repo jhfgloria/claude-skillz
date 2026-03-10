@@ -1,6 +1,6 @@
 ---
 name: coding-typescript
-description: Writes best practices for writing clean, maintainable TypeScript code in this codebase.
+description: Writes best practices for writing clean, maintainable TypeScript code.
 ---
 
 ### Model
@@ -19,7 +19,7 @@ description: Writes best practices for writing clean, maintainable TypeScript co
 - Use for-loops instead of the functionall approach for cost-intensive iterations.
 
 #### Functions
-- Avoid anonymous, except when used as function arguments.
+- Avoid anonymous fucntions, except when used as function arguments.
 
 **Bad:**
 ```typescript

@@ -15,9 +15,18 @@ description: Codes the solution pointed by the user, or pointed by a previously 
 - Don't do refactoring of unnecessary code (outside the scope of the plan) unless told.
 - Never commit code without permission.
 - Duplications is not a bad thing. Don't try to DRY every repetition in code.
-- Code should be DRYed if the repitition becomes a domain of the project.
+- Code should be DRYed if the target of repetition becomes a domain of the project.
 
 ### Programming Language selection
-- JavaScript: use `javascript-code` skill
+- JavaScript: use `coding-javascript` skill
 - TypeScript: use `coding-typescript` skill
+- Elixir: use `coding-elixir` skill
 - Other programming languages: use Model knowledge and languages best-practices
+
+### Tests
+- Avoid long tests. Every test should test one scenarion/use-case.
+- Use the Arrange-Act-Assess framework to write tests.
+- Don't mock as Arrange as first approach. Only if necessary.
+- Don't mock code that we don't control unless really necessary (e.g. dependencies).
+- Use tools that mock the network, instead of mocking the libraries that do network calls.
+- Use a test pyramid like Medium-Large-Small for Unit-Integration-E2E.

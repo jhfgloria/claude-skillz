@@ -1,4 +1,7 @@
-This skill defines JavaScript coding patterns and style conventions for Node.js backend services.
+---
+name: coding-javascript
+description: Writes best practices for writing clean, maintainable JavaScript code.
+---
 
 ## File Structure
 
