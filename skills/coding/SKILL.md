@@ -18,7 +18,6 @@ description: Codes the solution pointed by the user, or pointed by a previously 
 - Code should be DRYed if the target of repetition becomes a domain of the project.
 
 ### Programming Language selection
-- JavaScript: use `coding-javascript` skill
 - TypeScript: use `coding-typescript` skill
 - Elixir: use `coding-elixir` skill
 - Other programming languages: use Model knowledge and languages best-practices
