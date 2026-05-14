@@ -13,14 +13,14 @@ description: Creates a weekly report of what I did this week
 - Be succint in the every paragraph.
 - Use bullet points or todo lists when possible.
 - When using Github, always use the `gh` tool - username is `jhfgloria`.
-- Things to do can be found in the file `todos.md`.
+- Things to do can be found in the file `kanban.md`.
 - Output in Portugal Portugues (pt-pt) and HTML.
 - Use style present in `dailies/2026-05-11.html`.
 - The week should be every weekday between last Monday and the day of the report.
 - Reports should not contain information from the week before.
 
 ### Workflow
-- Look a the todos list for things that were done this week or not complete.
+- Look a the todos list (`kanban.md`) for things that were done this week or not complete.
 - With subagents (in parallel) look for information in:
   - Gmail (relevant or important emails).
   - Calendar meetings.
