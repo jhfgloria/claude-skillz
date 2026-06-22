@@ -1,5 +1,5 @@
 ---
-name: planning-linear-work
+name: work--planning-linear-ticket
 description: Plans the work needed for a specific Linear ticket provided by me. Creates a plan to address the ticket and discusses the plan with me if needed.
 ---
 

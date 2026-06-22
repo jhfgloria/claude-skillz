@@ -1,5 +1,5 @@
 ---
-name: tell-me-all-you-know
+name: research--tell-me-all-you-know
 description: Researches about a specific topic. May be related to work context (--work-context or --wc) or general things found in the web. Skill is used whenever the use starts the prompt with "Tell me all you know".
 ---
 
@@ -17,7 +17,7 @@ description: Researches about a specific topic. May be related to work context (
 - When using Slack as Knowledge base never research on threads or messages older than 1 month old.
 - When using Notion as Knowledge base never research on documents marked as old/deprecated.
 - When using JIRA as Knowledge base never research on tickets marked as Won't Do.
-- When using JIRA as Knowledge base never research on tickets marked as Linear.
+- When using Linear as Knowledge base never research on tickets marked as Won't Do.
 - When using Confluence as Knowledge base never research on documents marked as old/deprecated.
 - When using Obsidian as Knowledge base it takes less precedence if some other sources are found.
 

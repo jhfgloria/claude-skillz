@@ -1,5 +1,5 @@
 ---
-name: opening-pr
+name: work--opening-pr
 description: Opens a PR for the changes in the local branch or pdates the PR with new changes if it already exists.
 ---
 

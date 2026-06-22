@@ -1,5 +1,5 @@
 ---
-name: commiting-work
+name: work--commiting
 description: Commits work pending to be commited on the current branch.
 ---
 

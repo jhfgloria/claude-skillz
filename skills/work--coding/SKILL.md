@@ -1,5 +1,5 @@
 ---
-name: coding
+name: work--coding
 description: Codes the solution pointed by the user, or pointed by a previously agreed Plan. This Skill should always be selected when the task is to code. Then, according to the programming language it should pick different skills appointed by this Skill.
 ---
 

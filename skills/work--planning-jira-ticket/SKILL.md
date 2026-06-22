@@ -1,5 +1,5 @@
 ---
-name: planning-jira-work
+name: work--planning-jira-ticket
 description: Plans the work needed for a specific JIRA ticket provided by me. Creates a plan to address the ticket and discusses the plan with me if needed.
 ---
 

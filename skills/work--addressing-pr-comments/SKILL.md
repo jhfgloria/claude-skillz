@@ -1,5 +1,5 @@
 ---
-name: addressing-pr-comments
+name: work--addressing-pr-comments
 description: Given a PR number, looks for the comments with :thumbsup: and :eyes: reactions to evaluate comments and plan changes accordingly.
 ---
 
