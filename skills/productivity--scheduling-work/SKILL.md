@@ -1,5 +1,5 @@
 ---
-name: scheduling-work
+name: productivity--scheduling-work
 description: Schedules my workday with learning, business as usual and meetings preparation
 ---
 

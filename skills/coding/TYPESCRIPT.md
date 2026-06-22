@@ -1,18 +1,3 @@
----
-name: coding-typescript
-description: Writes best practices for writing clean, maintainable TypeScript code.
----
-
-### Model
-- Use Sonnet 4.6 for this skill
-
-### Write Self-Explaining Code
-- Never add explanatory comments unless absolutely necessary.
-- Code should be clear enough to understand without comments.
-- Use descriptive variable and function.
-
-### Style of code
-
 #### General
 - Use semicolons.
 - Use functional approaches as much as possible.

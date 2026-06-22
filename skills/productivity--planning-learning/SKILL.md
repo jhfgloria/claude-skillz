@@ -1,5 +1,5 @@
 ---
-name: planning-learning
+name: productivity--planning-learning
 description: Plans a routine of learning based on fixed topics or my input desired learning
 ---
 

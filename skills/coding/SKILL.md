@@ -17,9 +17,9 @@ description: Codes the solution pointed by the user, or pointed by a previously 
 - Duplications is not a bad thing. Don't try to DRY every repetition in code.
 - Code should be DRYed if the target of repetition becomes a domain of the project.
 
-### Programming Language selection
-- TypeScript: use `coding-typescript` skill
-- Elixir: use `coding-elixir` skill
+### Programming Language best practices.
+- TypeScript: use ./TYPESCRIPT.md for best practices.
+- Elixir: use ./ELIXIR.md for best practices.
 - Other programming languages: use Model knowledge and languages best-practices
 
 ### Tests
@@ -29,3 +29,8 @@ description: Codes the solution pointed by the user, or pointed by a previously 
 - Don't mock code that we don't control unless really necessary (e.g. dependencies).
 - Use tools that mock the network, instead of mocking the libraries that do network calls.
 - Use a test pyramid like Medium-Large-Small for Unit-Integration-E2E.
+
+### Recommendations/Permissions
+- Read best practices files freely:
+    - ELIXIR.md
+    - TYPESCRIPT.md
