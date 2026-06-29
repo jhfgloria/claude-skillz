@@ -4,9 +4,11 @@ description: Codes the solution pointed by the user, or pointed by a previously 
 ---
 
 ### Model
-- Use Sonnet 4.6 while developing code.
+
+- Use Opus 4.x while developing code.
 
 ### Base Rules
+
 - Avoid long functions.
 - Avoid long files.
 - Avoid acronyms and abbreviations in names.
@@ -18,11 +20,13 @@ description: Codes the solution pointed by the user, or pointed by a previously 
 - Code should be DRYed if the target of repetition becomes a domain of the project.
 
 ### Programming Language best practices.
+
 - TypeScript: use ./TYPESCRIPT.md for best practices.
 - Elixir: use ./ELIXIR.md for best practices.
 - Other programming languages: use Model knowledge and languages best-practices
 
 ### Tests
+
 - Avoid long tests. Every test should test one scenarion/use-case.
 - Use the Arrange-Act-Assess framework to write tests.
 - Don't mock as Arrange as first approach. Only if necessary.
@@ -31,6 +35,7 @@ description: Codes the solution pointed by the user, or pointed by a previously 
 - Use a test pyramid like Medium-Large-Small for Unit-Integration-E2E.
 
 ### Recommendations/Permissions
+
 - Read best practices files freely:
-    - ELIXIR.md
-    - TYPESCRIPT.md
+  - ELIXIR.md
+  - TYPESCRIPT.md
